@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article= Article.new(article_params) #white listing title and description
-   
+    @article.user = User.first
     if  @article.save #Adding the article to the database
         flash[:notice] ="Article was created Sucssfully!"
       redirect_to article_path(@article) #rediecting to show function using uri
