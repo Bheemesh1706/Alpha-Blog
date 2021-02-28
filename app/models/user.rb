@@ -3,7 +3,7 @@ class User < ApplicationRecord
     before_save {self.email = email.downcase} #This function used to do changes to an attribute 
                                                 #of an object before storing it in the database
 
-    has_many :articles
+    has_many :articles, dependent: :destroy
 
     validates :username, presence: true, 
                         uniqueness: {case_sensitive: false}, 

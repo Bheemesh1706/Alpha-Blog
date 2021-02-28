@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
 
-  before_action :set_article, only: [:show, :edit, :update, :destroy] # this performs the given fn b4 the mentiond method's 
+  before_action :set_article, only: [:show, :edit, :update, :destroy] # this performs the given fn b4 the mentiond method's
+  before_action :require_user, except: [:show, :index] 
+  before_action :require_same_user, except: [:show, :index] 
  
 
   # GET /articles/1 or /articles/1.json
@@ -17,7 +19,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article= Article.new(article_params) #white listing title and description
-    @article.user = User.first
+    @article.user = current_user
     if  @article.save #Adding the article to the database
         flash[:notice] ="Article was created Sucssfully!"
       redirect_to article_path(@article) #rediecting to show function using uri
@@ -29,7 +31,6 @@ class ArticlesController < ApplicationController
 
   def update
     
-     
      if @article.update(article_params)
         flash[:notice] = "Article was Updated"
         redirect_to @article
@@ -54,6 +55,13 @@ class ArticlesController < ApplicationController
 
           def article_params
             params.require(:article).permit(:title, :description)
+          end
+
+          def require_same_user
+            if current_user != @article.user && !current_user.admin?
+              flash[:alert] = "You can only delete or edit your own article"
+              redirect_to @article
+            end
           end
  
 end
