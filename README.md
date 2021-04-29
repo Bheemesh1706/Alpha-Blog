@@ -17,7 +17,7 @@ https://bheemesh-blog.herokuapp.com/
       bundle rake db:migrate
       rails s -p 3001
   ```
-  * Visit [http://localhost:3001](http://localhost:3001) from your browser to access your WebApp.
+* Visit [http://localhost:3001](http://localhost:3001) from your browser to access your WebApp.
 
 
 
