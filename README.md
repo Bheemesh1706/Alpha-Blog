@@ -1,6 +1,7 @@
 # README
 
-https://bheemesh-blog.herokuapp.com/
+##### **Live link to access the app :** *[Live Link](https://bheemesh-blog.herokuapp.com/)*
+
 # About
    This a Blogging App where users could create blogs with their ideas and creativity and share them with the 
    world and like minded people.
@@ -22,7 +23,7 @@ https://bheemesh-blog.herokuapp.com/
 
 
 
-  ##### **Live link to access the app :** *[Live Link](https://bheemesh-blog.herokuapp.com/)*
+ 
 `
 
 
